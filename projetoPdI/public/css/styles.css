@@ -1,0 +1,136 @@
+
+*{
+    font-family: 'Roboto';
+}
+.navbar img {
+    width: 40px;
+    height: auto;
+}
+
+body{
+    padding: 20px;
+    min-height: 100vh;
+    padding-bottom: 100px;
+    position: relative;
+
+}
+
+header{
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+
+}
+
+.row{
+    margin: 0;
+}
+
+.container-fluid{
+    padding: 0;
+}
+
+.btn-primary{
+    background-color: #007bff;
+    border-color: 2px #007bff;
+}
+
+.btn-primary:hover{
+    background-color: #C28008;
+    border-color: #C28008;
+}
+
+#navbar{
+    justify-content: space-between;
+    background-color: #fff;
+}
+
+#navbar a{
+    font-size: 20px;
+    color:#797a7b
+}
+
+#navbar a:hover{
+    color: #1e6cd9;
+}
+
+#search-container{
+    background-image: url("../img/comercio.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    padding: 50px;
+    text-align: center;
+}
+#search-container h1{
+    color: #1e6cd9;
+    font-weight: 900;
+    margin-bottom: 20px;
+}
+
+#search-container form{
+    width: 50%;
+    margin: 0 auto;
+}
+
+#users-container{
+    padding: 50px;
+}
+
+#users-container h2{
+    color: #000000;
+    font-weight: 900;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#users-container .user-card{
+    flex: 1 1 0;
+    padding: 0;
+    border-radius: 10px;
+    margin: 5px;
+    max-width: 25%;
+}
+
+#users-container img{
+    max-height: 150px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.card .card-title{
+    text-transform: uppercase;
+    padding: #000000;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.card-text{
+    text-transform: uppercase;
+    font-size: 14px;
+    color:#797a7b;
+    text-align: center;
+}
+
+.card .btn {
+    text-transform: uppercase;
+    display: block;
+    margin: 0 auto;
+    width: fit-content;
+}
+
+footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 30px;
+    color: #000000;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    background-color: #6c757d;
+    left: 0
+}
+
+
