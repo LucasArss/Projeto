@@ -1,59 +1,68 @@
-
-*{
-    font-family: 'Roboto';
+/* Fonte padrão e box-sizing */
+* {
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
 }
+
+/* Navbar */
 .navbar img {
     width: 40px;
     height: auto;
 }
 
-body{
-    padding: 20px;
-    min-height: 100vh;
-    padding-bottom: 100px;
-    position: relative;
-
-}
-
-header{
-    background-color: #fff;
-    border-bottom: 1px solid #ccc;
-
-}
-
-.row{
-    margin: 0;
-}
-
-.container-fluid{
-    padding: 0;
-}
-
-.btn-primary{
-    background-color: #007bff;
-    border-color: 2px #007bff;
-}
-
-.btn-primary:hover{
-    background-color: #C28008;
-    border-color: #C28008;
-}
-
-#navbar{
+#navbar {
     justify-content: space-between;
     background-color: #fff;
 }
 
-#navbar a{
+#navbar a {
     font-size: 20px;
-    color:#797a7b
+    color: #797a7b;
 }
 
-#navbar a:hover{
+#navbar a:hover {
     color: #1e6cd9;
 }
 
-#search-container{
+/* Body e layout geral */
+body {
+    padding: 20px;
+    min-height: 100vh;
+    padding-bottom: 100px;
+    position: relative;
+}
+
+header {
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+}
+
+/* .row ajustada com margin e flex */
+.row {
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+.container-fluid {
+    padding: 0;
+}
+
+/* Botões */
+.btn-primary {
+    background-color: #007bff;
+    border: 2px solid #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #C28008;
+    border-color: #C28008;
+}
+
+/* Containers específicos */
+#search-container {
     background-image: url("../img/comercio.jpg");
     background-size: cover;
     background-position: center;
@@ -61,43 +70,45 @@ header{
     padding: 50px;
     text-align: center;
 }
-#search-container h1{
-    color: #1e6cd9;
+
+#search-container h1 {
+    color: #fff;
     font-weight: 900;
     margin-bottom: 20px;
 }
 
-#search-container form{
+#search-container form {
     width: 50%;
     margin: 0 auto;
 }
 
-#users-container{
+#users-container {
     padding: 50px;
 }
 
-#users-container h2{
+#users-container h2 {
     color: #000000;
     font-weight: 900;
     margin-bottom: 20px;
     text-align: center;
 }
 
-#users-container .user-card{
-    flex: 1 1 0;
+#users-container .user-card {
+    flex: 1 1 24%;
     padding: 0;
     border-radius: 10px;
-    margin: 5px;
+    margin: .5%;
     max-width: 25%;
 }
 
-#users-container img{
+#users-container img {
     max-height: 150px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
 
-.card .card-title{
+
+.card .card-title {
     text-transform: uppercase;
     padding: #000000;
     font-size: 20px;
@@ -106,10 +117,10 @@ header{
     margin-bottom: 30px;
 }
 
-.card-text{
+.card-text {
     text-transform: uppercase;
     font-size: 14px;
-    color:#797a7b;
+    color: #797a7b;
     text-align: center;
 }
 
@@ -120,17 +131,274 @@ header{
     width: fit-content;
 }
 
-footer{
+/* Footer */
+footer {
     position: absolute;
     bottom: 0;
     width: 100%;
     padding: 30px;
-    color: #000000;
     font-size: 20px;
     font-weight: bold;
     text-align: center;
-    background-color: #6c757d;
-    left: 0
+    background-color: #2c3e50;
+    color: #ecf0f1;       
+    left: 0;
 }
 
+/* Container de criação de evento */
+#event-create-container {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
+    padding: 30px;
+    margin-top: 40px;
+    margin-bottom: 60px;
+}
 
+#event-create-container h1 {
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+#event-create-container .form-control {
+    border-radius: 8px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 18px;
+    font-size: 16px;
+}
+
+#event-create-container .btn {
+    background-color: #007bff;
+    border: none;
+    padding: 10px 22px;
+    font-size: 16px;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+#event-create-container .btn:hover {
+    background-color: #0056b3;
+}
+
+/* Form control file */
+.form-control-file {
+    padding: 10px;
+    border: 2px solid;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #343a40;
+}
+
+.form-control-file:hover {
+    border-color: #0056b3;
+    background-color: #e2e6ea;
+    cursor: pointer;
+}
+
+/* Estilização da view do usuário */
+
+/* Container geral */
+.col-md-10.offset-md-1 {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    margin-top: 40px;
+    margin-bottom: 60px;
+}
+
+/* Título principal */
+.col-md-10.offset-md-1 h1 {
+    font-size: 32px;
+    font-weight: 900;
+    color: #1e6cd9;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* Layout flexível para a imagem e as informações */
+.row {
+    /* já declarado antes, mas aqui reforça */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+/* Container da imagem */
+#image-container {
+    flex: 1 1 320px;
+    max-width: 400px;
+    text-align: center;
+}
+
+#image-container img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+/* Container das infos */
+#info-container {
+    flex: 1 1 320px;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Nome do usuário */
+#info-container h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #222;
+    border-bottom: 2px solid #1e6cd9;
+    padding-bottom: 10px;
+}
+
+/* Estilo dos parágrafos de informação */
+#info-container p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Ícones ion-icon com cor */
+#info-container ion-icon {
+    font-size: 22px;
+    color: #1e6cd9;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column;
+        align-items: center;
+    }
+    #image-container, #info-container {
+        max-width: 100%;
+    }
+    #info-container p {
+        font-size: 16px;
+    }
+}
+
+@keyframes piscar {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.blink {
+  animation: piscar 1s infinite;
+  font-weight: bold;
+  color: #F4A261  !important; /* cor diferente para chamar atenção */
+}
+
+/* ======== PÁGINA SOBRE ======== */
+/* Container geral */
+#sobre-container {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    margin: auto;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+}
+
+/* Cabeçalho com logos */
+.sobre-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.sobre-header h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #1e6cd9; /* azul principal */
+    text-align: center;
+}
+
+/* Logos */
+.logo-sobre {
+    width: 80px;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.logo-sobre:hover {
+    transform: scale(1.1);
+}
+
+/* Títulos secundários */
+#sobre-container h2 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    color: #1e6cd9; /* azul principal */
+    border-left: 5px solid #C28008; /* laranja */
+    padding-left: 10px;
+}
+
+/* Parágrafos */
+#sobre-container p {
+    margin-bottom: 1rem;
+    color: #555; /* cor do texto principal */
+    font-size: 1rem;
+}
+
+/* Listas */
+#sobre-container ul {
+    margin-left: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+#sobre-container ul li {
+    margin-bottom: 0.5rem;
+    list-style: disc;
+}
+
+/* Destaques */
+#sobre-container strong {
+    color: #C28008; /* laranja */
+}
+
+#sobre-container em {
+    color: #1e6cd9; /* azul */
+    font-style: normal;
+    font-weight: 600;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .sobre-header {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .logo-sobre {
+        width: 60px;
+    }
+
+    .sobre-header h1 {
+        font-size: 1.5rem;
+    }
+}

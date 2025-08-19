@@ -1,3 +1,16 @@
+<script>
+function mascaraCPF(campo) {
+    let valor = campo.value.replace(/\D/g, ''); // Remove tudo que não for número
+
+    // Aplica a máscara
+    valor = valor.replace(/(\d{3})(\d)/, '$1.$2');
+    valor = valor.replace(/(\d{3})(\d)/, '$1.$2');
+    valor = valor.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+
+    campo.value = valor;
+}
+</script>
+
 <x-guest-layout>
     <x-authentication-card>
         <x-slot name="logo">
@@ -16,7 +29,7 @@
 
             <div class="mt-4">
                  <x-label for="cpf" value="{{ __('CPF') }}" />
-                 <x-input id="cpf" class="block mt-1 w-full" type="text" name="cpf" :value="old('cpf')" required autocomplete="cpf" />
+                 <x-input id="cpf" class="block mt-1 w-full" type="text" name="cpf" :value="old('cpf')" maxlength="14" required autocomplete="cpf" oninput="mascaraCPF(this)" required/>
             </div>
 
             <div class="mt-4">
@@ -37,11 +50,11 @@
             <x-label for="produto" value="{{ __('Produto Principal') }}" />
             <select id="produto" name="produto" class="block mt-1 w-full border-gray-300 rounded-md shadow-sm" required>
                 <option value="">-- Selecione um produto --</option>
-                <option value="eletronicos">Eletrônicos</option>
-                <option value="alimentos">Alimentos</option>
-                <option value="brinquedos">Brinquedos</option>
-                <option value="roupas">Roupas</option>
-                <option value="utilidades">Utilidades</option>
+                <option value="Eletronicos">Eletrônicos</option>
+                <option value="Alimentos">Alimentos</option>
+                <option value="Brinquedos">Brinquedos</option>
+                <option value="Roupas">Roupas</option>
+                <option value="Utilidades">Utilidades</option>
             </select>
         </div>
 

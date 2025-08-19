@@ -19,6 +19,8 @@ class CreateNewUser implements CreatesNewUsers
      */
     public function create(array $input): User
     {
+        $input['cpf'] = preg_replace('/[^0-9]/', '', $input['cpf']);
+
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],

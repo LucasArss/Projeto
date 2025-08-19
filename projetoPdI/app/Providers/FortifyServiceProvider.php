@@ -13,6 +13,10 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Laravel\Fortify\Actions\RedirectIfTwoFactorAuthenticatable;
 use Laravel\Fortify\Fortify;
+use Laravel\Fortify\Contracts\LoginResponse as LoginResponseContract;
+use App\Actions\Fortify\LoginResponse;
+use Laravel\Fortify\Contracts\RegisterResponse as RegisterResponseContract;
+use App\Actions\Fortify\RegisterResponse;
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -29,6 +33,10 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        $this->app->singleton(LoginResponseContract::class, LoginResponse::class); // Abre a home após login
+
+        $this->app->singleton(RegisterResponseContract::class, RegisterResponse::class); // Abre a home após registro
+
         Fortify::createUsersUsing(CreateNewUser::class);
         Fortify::updateUserProfileInformationUsing(UpdateUserProfileInformation::class);
         Fortify::updateUserPasswordsUsing(UpdateUserPassword::class);
