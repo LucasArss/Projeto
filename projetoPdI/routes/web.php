@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\LikeController;
+
 
 Route::get('/', [EventController::class, 'index']); // Rota para a página inicial que lista os usuários
 Route::get("/events/create", [EventController::class, "create"])->middleware('auth'); // Rota para criar eventos, protegida por autenticação
@@ -12,6 +14,9 @@ Route::get("/events/{id}/info", [EventController::class, "info"])->middleware('a
 Route::get("/events/{id}/edit", [EventController::class, "edit"])->middleware('auth')->name('events.edit'); // Rota para editar eventos, protegida por autenticação
 Route::delete("/events/{id}", [EventController::class, "destroy"])->middleware('auth')->name('events.destroy'); // Rota para deletar eventos, protegida por autenticação
 Route::put("/events/{id}", [EventController::class, "update"])->middleware('auth')->name('events.update'); // Rota para atualizar eventos, protegida por autenticação
+
+
+Route::post('/like/{comerciante}', [LikeController::class, 'toggle'])->name('like.toggle'); // Rota para dar like/dislike a um comerciante
 
 
 Route::get('/sobre', function (){

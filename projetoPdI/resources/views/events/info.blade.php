@@ -5,13 +5,20 @@
 @section('content')
 <div class="col-md-10 offset-md-1">
     <h1>Minhas Informações</h1>
+    @if($user->tipo == 'comerciante')
     <div class="row">
         <div id="image-container" class="col-md-6">
             <img src="{{ asset('img/users/' . $user->image) }}" alt="{{ $user->name }}" class="img-fluid">
+            <div class="like-count mt-3">
+                <span>👍 {{ $user->receivedLikes->where('liked', 1)->count() }}</span>
+                <span>👎 {{ $user->receivedLikes->where('liked', 0)->count() }}</span>
+            </div>
         </div>
+        @endif
         <div id="info-container" class="col-md-6">
             <h1>{{ $user->name }}</h1>
-            
+
+            @if($user->tipo == 'comerciante')
             <p class="user-cpf">
                 <ion-icon name="id-card-outline"></ion-icon> CPF: {{ preg_replace('/(\d{3})(\d{3})(\d{3})(\d{2})/', '$1.$2.$3-$4', $user->cpf) }}
             </p>
@@ -24,7 +31,14 @@
             <p class="user-contato"><ion-icon name="call-outline"></ion-icon> {{ $user->contato }}</p>
             <p class="user-produto"><ion-icon name="pricetag-outline"></ion-icon> Principal Produto: {{ $user->produto }}</p>
             <p class="user-produtos_oferecidos"><ion-icon name="pricetag-outline"></ion-icon> Outros Produtos Vendidos: {{ $user->produtos_oferecidos }}</p>
-
+            @endif
+            @if($user->tipo == 'cliente')
+            <p class="user-cpf">
+                <ion-icon name="id-card-outline"></ion-icon> CPF: {{ preg_replace('/(\d{3})(\d{3})(\d{3})(\d{2})/', '$1.$2.$3-$4', $user->cpf) }}   
+            </p>
+            <p class="user-email"><ion-icon name="mail-outline"></ion-icon> Email: {{ $user->email }}</p>
+            @endif
+            
             <!-- Botões Editar e Excluir -->
             <div class="mt-4 d-flex gap-3">
                 <a href="{{ route('events.edit', $user->id) }}" class="btn btn-primary">Editar</a>

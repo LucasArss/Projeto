@@ -31,6 +31,7 @@ class User extends Authenticatable
         'password',
         'cpf',
         'produto',
+        'tipo',
     ];
 
     /**
@@ -65,5 +66,14 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+    // Usuário que recebeu likes/deslikes
+    public function receivedLikes() {
+        return $this->hasMany(Like::class, 'comerciante_id');
+    }
+
+    // Usuário que deu likes/deslikes
+    public function givenLikes() {
+        return $this->hasMany(Like::class, 'user_id');
     }
 }

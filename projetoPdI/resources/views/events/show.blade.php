@@ -10,7 +10,11 @@
         <div class="row">
             <div id="image-container" class="col-md-6">
             <img src="{{ asset('img/users/' . $user->image) }}" alt="{{ $user->name }}" class="img-fluid">
+            <div class="like-count mt-3">
+                <span>👍 {{ $user->receivedLikes->where('liked', 1)->count() }}</span>
+                <span>👎 {{ $user->receivedLikes->where('liked', 0)->count() }}</span>
             </div>
+        </div>
             <div id="info-container" class="col-md-6">
                 <h1>{{ $user->name }}</h1>
                 <p class="user-bairro"><ion-icon name="location-outline"></ion-icon> Bairro: {{ $user->bairro }}</p>

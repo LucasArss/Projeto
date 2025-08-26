@@ -9,6 +9,16 @@ function mascaraCPF(campo) {
 
     campo.value = valor;
 }
+function toggleProduto() {
+    const checkbox = document.getElementById('tipo');
+    const produtoDiv = document.getElementById('produtoDiv');
+
+    if (checkbox.checked) {
+        produtoDiv.classList.remove('hidden');
+    } else {
+        produtoDiv.classList.add('hidden');
+    }
+}
 </script>
 
 <x-guest-layout>
@@ -47,8 +57,15 @@ function mascaraCPF(campo) {
                 <x-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
             </div>
             <div class="mt-4">
+            <label for="tipo" class="flex items-center">
+                <input type="checkbox" id="tipo" name="tipo" value="comerciante" class="mr-2" onchange="toggleProduto()" />
+                <span>Você é um comerciante?</span>
+            </label>
+        </div>
+
+        <div id="produtoDiv" class="mt-4 hidden">
             <x-label for="produto" value="{{ __('Produto Principal') }}" />
-            <select id="produto" name="produto" class="block mt-1 w-full border-gray-300 rounded-md shadow-sm" required>
+            <select id="produto" name="produto" class="block mt-1 w-full border-gray-300 rounded-md shadow-sm">
                 <option value="">-- Selecione um produto --</option>
                 <option value="Eletronicos">Eletrônicos</option>
                 <option value="Alimentos">Alimentos</option>

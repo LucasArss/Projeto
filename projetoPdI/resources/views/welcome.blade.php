@@ -27,6 +27,23 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ $user->name }}</h5>
                         <p class="card-text">{{ $user->produto }}</p>
+                        <div class="like-count">
+                            <span>👍 {{ $user->receivedLikes->where('liked', 1)->count() }}</span>
+                            <span>👎 {{ $user->receivedLikes->where('liked', 0)->count() }}</span>
+                        </div>
+            
+            @auth
+            <div class="like-btns">
+                <form action="{{ route('like.toggle', $user->id) }}" method="POST">
+                    @csrf
+                    <button type="submit" name="liked" value="1" class="btn btn-success btn-sm">👍</button>
+                    <button type="submit" name="liked" value="0" class="btn btn-danger btn-sm">👎</button>
+                </form>
+            </div>    
+            @endauth
+            
+
+
                         <a href="/events/{{$user->id}}" class="btn btn-primary">Ver mais</a>
                 </div>
             </div>

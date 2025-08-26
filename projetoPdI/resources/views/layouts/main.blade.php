@@ -35,9 +35,11 @@
                     @endphp
 
                     @unless($dadosCompletos)
+                    @if($user->tipo == 'comerciante')
                         <li class="nav-item">
                             <a href="/events/create" class="nav-link blink">Cadastre Suas Informações</a>
                         </li>
+                    @endif
                     @endunless
                          <li class="nav-item">
                             <a href="/events/{{$user->id}}/info" class="nav-link">Minhas Informações</a>

@@ -13,15 +13,16 @@ class EventController extends Controller
 
     $search = request('search');
     // Verifica se há uma busca
-    if($search) {
-        // Busca usuários que possuem o termo pesquisado no nome ou produto
-        $users = User::where([
-            ['name', 'like', '%'.$search.'%']])->get();
-        
+     if ($search) {
+        // Busca comerciantes cujo nome contém o termo
+        $users = User::where('tipo', 'comerciante')
+                     ->where('name', 'like', '%'.$search.'%')
+                     ->get();
     } else {
-        // Se não houver busca, retorna todos os usuários
-        $users = User::all();
-    }         
+        // Todos os comerciantes
+        $users = User::where('tipo', 'comerciante')->get();
+    }
+
     return view("welcome", ['users' => $users, 'search'=> $search]);
 }
 
@@ -119,12 +120,14 @@ class EventController extends Controller
         'cpf' => 'required|string|max:14|unique:users,cpf,' . $id,
         'name' => 'required|string|max:255',
         'email' => 'required|email|max:255',
-        'bairro' => 'required|string|max:255',
-        'rua' => 'required|string|max:255',
-        'forma_pagamento' => 'required|string|max:255',
-        'contato' => 'required|string|max:255',
-        'p_oferecido' => 'required|string|max:255',
-        'h_funcionamento' => 'required|string|max:255',
+
+        // Campos específicos para comerciantes
+        'bairro' => 'required_if:tipo,comerciante|string|max:255',
+        'rua' => 'required_if:tipo,comerciante|string|max:255',
+        'forma_pagamento' => 'required_if:tipo,comerciante|string|max:255',
+        'contato' => 'required_if:tipo,comerciante|string|max:255',
+        'p_oferecido' => 'required_if:tipo,comerciante|string|max:255',
+        'h_funcionamento' => 'required_if:tipo,comerciante|string|max:255',
     ]);
 
     $user = User::findOrFail($id);

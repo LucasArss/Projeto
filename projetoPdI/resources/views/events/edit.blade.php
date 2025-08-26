@@ -25,6 +25,7 @@
             @csrf
             @method('PUT')
 
+            @if($user->tipo == 'comerciante')
             <div class="form-group">
                 <label for="cpf">CPF:</label>
                 <input type="text" class="form-control" id="cpf" name="cpf" placeholder="Digite seu CPF" value="{{ $user->cpf }}" oninput="mascaraCPF(this)" required>
@@ -95,6 +96,23 @@
                 <label for="p_oferecido">Produtos Oferecidos:</label>
                 <textarea class="form-control" id="p_oferecido" name="p_oferecido" placeholder="Descreva os produtos oferecidos">{{ $user->produtos_oferecidos }}</textarea>    
             </div>
+            @endif
+
+            @if($user->tipo == 'cliente')
+            <div class="form-group">
+                <label for="name">Nome:</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Digite seu nome" value="{{ $user->name }}">
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Digite seu email" value="{{ $user->email }}">
+            </div>
+             <div class="form-group">
+                <label for="cpf">CPF:</label>
+                <input type="text" class="form-control" id="cpf" name="cpf" placeholder="Digite seu CPF" value="{{ $user->cpf }}" oninput="mascaraCPF(this)" required>
+            </div>
+            @endif
+            
 
             <input type="submit" class="btn btn-primary" value="Salvar Informações">
         </form>
