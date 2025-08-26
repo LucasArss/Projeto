@@ -30,7 +30,7 @@
                 <label for="cpf">CPF:</label>
                 <input type="text" class="form-control" id="cpf" name="cpf" placeholder="Digite seu CPF" value="{{ $user->cpf }}" oninput="mascaraCPF(this)" required>
             </div>
-
+            
             <div class="form-group">
                 <label for="name">Nome:</label>
                 <input type="text" class="form-control" id="name" name="name" placeholder="Digite seu nome" value="{{ $user->name }}">

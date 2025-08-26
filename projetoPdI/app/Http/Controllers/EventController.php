@@ -23,7 +23,7 @@ class EventController extends Controller
         $users = User::where('tipo', 'comerciante')->get();
     }
 
-    return view("welcome", ['users' => $users, 'search'=> $search]);
+    return view("welcome", ['users' => $users, 'search'=> $search]); // Retorna a view com os comerciantes e o termo de busca
 }
 
 
@@ -46,11 +46,11 @@ class EventController extends Controller
         if (!$user) {
             return redirect('/')->with('error', 'Você precisa estar logado para cadastrar informações.');
         }
-
+            // Verifica se uma imagem foi enviada no request
         if($request->hasFile('image') && $request->file('image')->isValid()) {
-            $requestImage = $request->{('image')};
-            $extension = $requestImage->extension();
-            $imageName = md5($requestImage->getClientOriginalName() . strtotime('now')) . '.' . $extension;
+            $requestImage = $request->{('image')};// obtém a imagem do request
+            $extension = $requestImage->extension();// obtém a extensão da imagem
+            $imageName = md5($requestImage->getClientOriginalName() . strtotime('now')) . '.' . $extension;// cria um nome único para a imagem
             
             // move a imagem para o diretório público
             // public_path() retorna o caminho completo para a pasta public
@@ -67,22 +67,24 @@ class EventController extends Controller
             'forma_pagamento' => 'required|string|max:255',
             'contato' => 'required|string|max:255',
             'p_oferecido' => 'required|string|max:255',
-            'h_funcionamento' => 'required|string|max:255',]
-        ,[
+            'h_funcionamento' => 'required|string|max:255',],
+        // Mensagens de erro personalizadas    
+        [
         'bairro.required' => 'O campo bairro está vazio por favor preencha-o corretamente.',
         'rua.required' => 'O campo  rua está vazio por favor preencha-o corretamente.',
         'contato.required' => 'O campo contato está vazio por favor preencha-o corretamente.',
         'p_oferecido.required' => 'O campo pagamento está vazio por favor preencha-o corretamente.',        
         'h_funcionamento.required' => 'O campo horario de funcionamento esta vazio por favor preencha-o corretamente.',
     ]);
-
+        // Atualiza os campos do usuário autenticado com os dados do request
         $user->bairro = $request->bairro;
         $user->rua = $request->rua;
         $user->forma_pagamento = $request->forma_pagamento;
         $user->contato = $request->contato;
         $user->produtos_oferecidos = $request->p_oferecido;
         $user->horario_funcionamento = $request->h_funcionamento;
-
+        
+        // Salva as alterações no banco de dados  
         $user->save();
         return redirect("/")->with('sucess', 'Informações cadastradas com sucesso!');
 
@@ -90,22 +92,26 @@ class EventController extends Controller
 
 
 }
-
+    // Exibe os detalhes de um usuário específico  
     public function show($id){
+        // Encontra o usuário pelo ID ou falha se não encontrado
         $user = User::findOrFail($id);
         return view('events.show', ['user' => $user]);
     }
 
-
+    // Exclui a conta do usuário autenticado   
     public function destroy($id){
         $user = User::findOrFail($id);
+        // Verifica se o usuário autenticado é o mesmo que está sendo excluído
         if (Auth::user()->id !== $user->id) {
             return redirect('/')->with('error', 'Você não tem permissão para excluir este usuário.');
         }
+        // Exclui o usuário do banco de dados
         $user->delete();
         return redirect('/')->with('success', 'Conta excluída com sucesso!');
     }
 
+    // Exibe o formulário de edição para o usuário autenticado
     public function edit($id){
         $user = User::findOrFail($id);
         if (Auth::user()->id !== $user->id) {
@@ -114,8 +120,9 @@ class EventController extends Controller
         return view('events.edit', ['user' => $user]);
     }
 
+    // Atualiza as informações do usuário autenticado
     public function update(Request $request, $id)
-{
+{   // Validação dos dados recebidos
     $request->validate([
         'cpf' => 'required|string|max:14|unique:users,cpf,' . $id,
         'name' => 'required|string|max:255',

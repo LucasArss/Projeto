@@ -1,8 +1,8 @@
-@extends('layouts.main')
+@extends('layouts.main')<!-- Extende o layout principal -- > <!-->
 
-@section('title', 'Cadastrar Evento')
+@section('title', 'Cadastrar Evento')<!-- Define o título da página -- ><!-->
 
-@section('content')
+@section('content')<!-- Inicia a seção de conteúdo -- ><!-->
 
 <main>
     @if ($errors->any())

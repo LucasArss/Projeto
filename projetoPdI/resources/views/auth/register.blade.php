@@ -1,4 +1,4 @@
-<script>
+<script> //Abre a tag script para o JavaScript
 function mascaraCPF(campo) {
     let valor = campo.value.replace(/\D/g, ''); // Remove tudo que não for número
 
@@ -9,9 +9,9 @@ function mascaraCPF(campo) {
 
     campo.value = valor;
 }
-function toggleProduto() {
-    const checkbox = document.getElementById('tipo');
-    const produtoDiv = document.getElementById('produtoDiv');
+function toggleProduto() { // Função para mostrar/ocultar o campo de produto
+    const checkbox = document.getElementById('tipo'); // Checkbox de comerciante
+    const produtoDiv = document.getElementById('produtoDiv'); // Div do campo de produto
 
     if (checkbox.checked) {
         produtoDiv.classList.remove('hidden');
