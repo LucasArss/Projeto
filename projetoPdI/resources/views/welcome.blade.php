@@ -7,7 +7,7 @@
 
 
 <div id="search-container" class="col-md-12">
-    <h1> Busque por um usuario</h1>
+    <h1> Busque por um usuário</h1>
     <form action="/" method="GET">
         <input type="text" id="search" name="search" class="form-control" placeholder="Procure">
     </form>
